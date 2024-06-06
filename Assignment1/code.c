@@ -5,14 +5,15 @@
 #define CLEAR_COMMAND "cls"
 
 int text_input();
-int save_text(const std::string& filename);
-int load_text(const std::string& filename);
-char getCharAt(const std::vector<std::string>& lines, int lineNumber, int index);
-void insertTextAt(std::vector<std::string>& lines, int lineNumber, int index, const std::string& text);
-std::vector<std::pair<int, int>> searchText(const std::vector<std::string>& lines, const std::string& searchText);
+int save_text(const char *filename);
+int load_text(const char *filename);
+char getCharAt(char **lines, int lineNumber, int index);
+void insertTextAt(char **lines, int lineNumber, int index, const char *text);
+int searchText(char** lines, int lineCount, const char* searchText, int positions[][2]);
 void clearConsole();
 
-std::vector<std::string> text_lines;
+char** text_lines = NULL;
+int line_count = 0;
 
 int main() {
     std::string command;
