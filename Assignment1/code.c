@@ -1,7 +1,6 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <fstream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #define CLEAR_COMMAND "cls"
 
