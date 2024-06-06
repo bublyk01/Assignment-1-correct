@@ -98,10 +98,15 @@ void clearConsole() {
 }
 
 int text_input() {
-    std::string text;
-    std::cout << "Enter text: ";
-    std::getline(std::cin, text);
-    text_lines.push_back(text);
+    char text;
+    printf("Enter text: ");
+    fgets(text, sizeof(text), stdin);
+    text[strcspn(text, "\n")] = 0;
+
+    text_lines = realloc(text_lines, (line_count + 1) * sizeof(char*));
+    text_lines[line_count] = malloc((strlen(text) + 1) * sizeof(char));
+    strcpy_s(text_lines[line_count], strlen(text) + 1, text);
+    line_count++;
     return 0;
 }
 
