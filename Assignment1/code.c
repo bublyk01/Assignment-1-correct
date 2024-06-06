@@ -16,44 +16,44 @@ char** text_lines = NULL;
 int line_count = 0;
 
 int main() {
-    std::string command;
+    char command;
 
-    while (true) {
+    while (1) {
         clearConsole();
-        std::cout << "Choose the command (or type 'exit' to quit): ";
-        std::cin >> command;
-        std::cin.ignore();
+        printf("Choose the command (or type 'exit' to quit): ");
+        scanf_s("%s", command, (unsigned)_countof(command));
+        getchar();
 
-        if (command == "1") {
+        if (command, "1") {
             text_input();
         }
-        else if (command == "2") {
+        else if (command, "2") {
             std::cout << "Enter new line text: ";
             std::string new_line;
             std::getline(std::cin, new_line);
             text_lines.push_back(new_line);
         }
-        else if (command == "3") {
+        else if (command, "3") {
             std::cout << "Enter the file name for saving: ";
             std::string filename;
             std::cin >> filename;
             save_text(filename);
             std::cout << "Text has been saved successfully\n";
         }
-        else if (command == "4") {
+        else if (command, "4") {
             std::cout << "Enter the file name for loading: ";
             std::string filename;
             std::cin >> filename;
             load_text(filename);
             std::cout << "Text has been loaded successfully\n";
         }
-        else if (command == "5") {
+        else if (command, "5") {
             std::cout << "You wrote:\n";
             for (const auto& line : text_lines) {
                 std::cout << line << "\n";
             }
         }
-        else if (command == "6") {
+        else if (command, "6") {
             int lineNumber, index;
             std::cout << "Enter line number and index: ";
             std::cin >> lineNumber >> index;
@@ -65,7 +65,7 @@ int main() {
 
             insertTextAt(text_lines, lineNumber - 1, index, text);
         }
-        else if (command == "7") {
+        else if (command, "7") {
             std::cout << "Enter text to search: ";
             std::string search_text;
             std::getline(std::cin, search_text);
@@ -80,10 +80,10 @@ int main() {
                 }
             }
         }
-        else if (command == "help") {
+        else if (command, "help") {
             std::cout << "1 - text typewriter, 2 - new line, 3 - save the file, 4 - load the file, 5 - show what you wrote, 6 - insert text at position, 7 - search\n";
         }
-        else if (command == "exit") {
+        else if (command, "exit") {
             std::cout << "Exiting the program...\n";
             break;
         }
