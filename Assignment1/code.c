@@ -35,16 +35,16 @@ int main() {
             printf("Text has been saved successfully");
         }
         else if (command, "3") {
-            std::cout << "Enter the file name for loading: ";
-            std::string filename;
-            std::cin >> filename;
+            printf("Enter the file name for loading: ");
+            char filename;
+            scanf_s("%s", filename, (unsigned)_countof(filename));
             load_text(filename);
-            std::cout << "Text has been loaded successfully\n";
+            printf("Text has been loaded successfully");
         }
         else if (command, "4") {
-            std::cout << "You wrote:\n";
-            for (const auto& line : text_lines) {
-                std::cout << line << "\n";
+            printf("You wrote:\n");
+            for (int i = 0; i < line_count; i++) {
+                printf("%s\n", text_lines[i]);
             }
         }
         else if (command, "5") {
