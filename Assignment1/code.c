@@ -49,44 +49,45 @@ int main() {
         }
         else if (command, "5") {
             int lineNumber, index;
-            std::cout << "Enter line number and index: ";
-            std::cin >> lineNumber >> index;
-            std::cin.ignore();
+            printf("Enter line number and index: ");
+            scanf_s("%d %d, &lineNumber, &index");
+            getchar();
 
-            std::cout << "Enter text to insert: ";
-            std::string text;
-            std::getline(std::cin, text);
+            printf("Enter text to insert: ");
+            char text;
+            fgets(text, sizeof(text), stdin);
 
             insertTextAt(text_lines, lineNumber - 1, index, text);
         }
         else if (command, "6") {
-            std::cout << "Enter text to search: ";
-            std::string search_text;
-            std::getline(std::cin, search_text);
+            printf("Enter text to search: ");
+            char search_text;
+            fgets(search_text, sizeof(search_text), stdin);
 
-            std::vector<std::pair<int, int>> positions = searchText(text_lines, search_text);
-            if (positions.empty()) {
-                std::cout << "Text not found\n";
+            int positions;
+            int count = searchText(text_lines, line_count, search_text, positions);
+            if (count=0) {
+                printf("Text not found");
             }
             else {
-                for (const auto& pos : positions) {
-                    std::cout << "Text was found in this position: " << pos.first + 1 << " " << pos.second << "\n";
+                for (int i = 0; i < count; i++) {
+                    printf("Text was found in this position: %d %d\n", positions[i][0] + 1, positions[i][1] + 1);
                 }
             }
         }
         else if (command, "help") {
-            std::cout << "1 - text typewriter, 2 - new line, 3 - save the file, 4 - load the file, 5 - show what you wrote, 6 - insert text at position, 7 - search\n";
+            printf("1 - text typewriter, 2 - new line, 3 - save the file, 4 - load the file, 5 - show what you wrote, 6 - insert text at position, 7 - search\n");
         }
         else if (command, "exit") {
-            std::cout << "Exiting the program...\n";
+            printf("Exiting the program...\n");
             break;
         }
         else {
-            std::cout << "Invalid command\n";
+            printf("Invalid command\n");
         }
 
-        std::cout << "Press Enter to continue...";
-        std::cin.ignore();
+        printf("Press Enter to continue...");
+        getchar();
     }
 
     return 0;
